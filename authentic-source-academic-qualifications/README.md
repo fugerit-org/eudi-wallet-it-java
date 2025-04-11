@@ -28,6 +28,10 @@ quarkus ext add io.quarkus:quarkus-info
 quarkus extension add quarkus-smallrye-openapi
 ```
 
+```shell script
+quarkus ext add io.quarkus:quarkus-jacoco
+```
+
 ## Original quarkus README
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
