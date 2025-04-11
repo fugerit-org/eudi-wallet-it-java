@@ -25,4 +25,13 @@ public class AcademicQualificationRequest {
     public void setPersonId(String personId) {
         this.personId = personId;
     }
+
+    @Override
+    public String toString() {
+        return "AcademicQualificationRequest{" +
+                "personId='" + personId + '\'' +
+                ", taxCode='" + taxCode + '\'' +
+                '}';
+    }
+
 }

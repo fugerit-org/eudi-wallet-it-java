@@ -4,6 +4,8 @@ import io.quarkus.runtime.util.StringUtil;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -12,8 +14,13 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class AcademicQualificationResource {
 
+    private static Logger log = LoggerFactory.getLogger( AcademicQualificationResource.class );
+
     @POST
     public Response getQualifications(AcademicQualificationRequest request) {
+
+        log.info( "request : {}", request );
+
         if (request == null || StringUtil.isNullOrEmpty( request.getTaxCode() ) ) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("{\"error\": \"Missing required field: tax_code\"}")
