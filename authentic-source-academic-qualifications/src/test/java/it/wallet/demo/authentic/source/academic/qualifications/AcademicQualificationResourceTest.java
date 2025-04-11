@@ -8,10 +8,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 @QuarkusTest
-public class AcademicQualificationResourceTest {
+class AcademicQualificationResourceTest {
 
     @Test
-    public void testAcademicQualificationSuccess() {
+    void testAcademicQualificationSuccess() {
         String requestBody = """
             {
                 "tax_code": "RSSMRA80A01F205D",
@@ -32,7 +32,7 @@ public class AcademicQualificationResourceTest {
     }
 
     @Test
-    public void testMissingParameters() {
+    void testMissingParameters() {
         String requestBody = """
             {
                 "person_id": "12345678A"
@@ -48,4 +48,19 @@ public class AcademicQualificationResourceTest {
                 .statusCode(400)
                 .body("error", notNullValue());
     }
+
+    @Test
+    void testMissingRequest() {
+        String requestBody = "";
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(requestBody)
+                .when()
+                .post("/academic-qualifications")
+                .then()
+                .statusCode(400)
+                .body("error", notNullValue());
+    }
+
 }
