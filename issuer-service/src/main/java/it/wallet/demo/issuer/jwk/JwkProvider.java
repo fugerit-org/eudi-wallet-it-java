@@ -4,7 +4,7 @@ import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.jwk.*;
 import com.nimbusds.jose.jwk.gen.ECKeyGenerator;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.fugerit.java.core.cfg.ConfigRuntimeException;
+import org.fugerit.java.core.function.SafeFunction;
 
 /**
  * For demonstration, we'll use ES256 (ECDSA with P-256 curve), which is explicitly supported by:
@@ -20,14 +20,10 @@ public class JwkProvider {
     private static final ECKey ecKey;
 
     static {
-        try {
-            ecKey = new ECKeyGenerator(Curve.P_256)
-                    .keyID("it-wallet-demo-issuer-key-1") // used in 'kid'
-                    .algorithm(JWSAlgorithm.ES256)
-                    .generate();
-        } catch (Exception e) {
-            throw new ConfigRuntimeException("Failed to generate EC key", e);
-        }
+        ecKey = SafeFunction.get( () ->  new ECKeyGenerator(Curve.P_256)
+                .keyID("it-wallet-demo-issuer-key-1") // used in 'kid'
+                .algorithm(JWSAlgorithm.ES256)
+                .generate() );
     }
 
     public ECKey getEcKey() {

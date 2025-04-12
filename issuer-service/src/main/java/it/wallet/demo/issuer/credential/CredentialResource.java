@@ -9,6 +9,7 @@ import com.nimbusds.jose.crypto.ECDSASigner;
 import com.nimbusds.jose.jwk.ECKey;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import it.wallet.demo.issuer.RestHelper;
 import it.wallet.demo.issuer.jwk.JwkProvider;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -39,11 +40,12 @@ public class CredentialResource {
 
     @POST
     public Response issueCredential(CredentialRequest request) {
-        if (!"sd-jwt".equalsIgnoreCase(request.getFormat())) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
 
-        try {
+        return RestHelper.handle(() -> {
+            if (!"sd-jwt".equalsIgnoreCase(request.getFormat())) {
+                return Response.status(Response.Status.BAD_REQUEST).build();
+            }
+
             String alg = "sha-256";
             // SD-JWT disclosure claims
             Map<String, String> claimsPersonData = Map.of(
@@ -57,19 +59,19 @@ public class CredentialResource {
             );
             // Create an SDObjectBuilder instance.
             SDObjectBuilder builder = new SDObjectBuilder(alg);
-            builder.putSDClaim( SALT, "person_data", claimsPersonData );
-            builder.putSDClaim( SALT, "degree_data", List.of( degreeData ) );
+            builder.putSDClaim(SALT, "person_data", claimsPersonData);
+            builder.putSDClaim(SALT, "degree_data", List.of(degreeData));
             // SD-JWT traditional claims
             builder.putClaim("iss", "https://walletdemo.fugerit.org/issuer-service");
             builder.putClaim("sub", "U29nZWkgUERORA==");
             builder.putClaim("issuing_authority", "Fugerit Organization");
             builder.putClaim("issuing_country", "IT");
-            builder.putClaim("status", Map.of( "status_assertion", Map.of( "credential_hash_alg", alg ) ) );
+            builder.putClaim("status", Map.of("status_assertion", Map.of("credential_hash_alg", alg)));
             ZonedDateTime futureTime = ZonedDateTime.now(ZoneOffset.UTC).plusHours(2);
-            builder.putClaim( "exp", futureTime.toEpochSecond() );
+            builder.putClaim("exp", futureTime.toEpochSecond());
             // Create a Map instance.
             Map<String, Object> claims = builder.build();
-            log.info( "sd-jwt claims : {}", claims );
+            log.info("sd-jwt claims : {}", claims);
 
             // sign
             JWSHeader header =
@@ -86,14 +88,10 @@ public class CredentialResource {
             // Let the signer sign the credential JWT.
             jwt.sign(signer);
             String result = jwt.serialize();
-            log.info( "result : {}", result );
-            return Response.ok( result ).build();
+            log.info("result : {}", result);
+            return Response.ok(result).build();
 
-        } catch (Exception e) {
-            return Response.serverError().entity(Map.of(
-                    "error", "Failed to issue credential",
-                    "details", e.getMessage()
-            )).build();
-        }
+        }, "Failed to issue credential");
     }
+
 }

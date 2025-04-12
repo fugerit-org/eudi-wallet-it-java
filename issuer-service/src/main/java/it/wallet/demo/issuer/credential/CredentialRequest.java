@@ -47,4 +47,15 @@ public class CredentialRequest {
     public void setSubjectSyntax(String subjectSyntax) {
         this.subjectSyntax = subjectSyntax;
     }
+
+    @Override
+    public String toString() {
+        return "CredentialRequest{" +
+                "credentialType='" + credentialType + '\'' +
+                ", format='" + format + '\'' +
+                ", subjectSyntaxType='" + subjectSyntaxType + '\'' +
+                ", subjectSyntax='" + subjectSyntax + '\'' +
+                '}';
+    }
+
 }
