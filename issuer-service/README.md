@@ -1,5 +1,23 @@
 # issuer-service
 
+## Project creation
+
+requisites :
+
+- Java 21+
+- Maven 3.9.9+
+- Quarkus 3 CLI
+
+create command :
+
+```shell script
+quarkus create app it.wallet.demo:issuer-service \
+  --no-code \
+  --extension='quarkus-rest-jackson,quarkus-smallrye-openapi,quarkus-swagger-ui,quarkus-info,quarkus-jacoco'
+```
+
+## Original quarkus README
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.

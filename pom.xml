@@ -83,6 +83,7 @@
 
 	<modules>
 		<module>authentic-source-academic-qualifications</module>
+		<module>issuer-service</module>
 	</modules>
 	
 </project>
