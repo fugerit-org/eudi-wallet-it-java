@@ -298,3 +298,9 @@ numfig = True
 
 # to turn smartquotes off and be able to use  
 smartquotes = False
+
+extensions = [
+    'sphinxcontrib.mermaid',
+]
+
+mermaid_output_format = 'png'  # 'svg' or 'png'
