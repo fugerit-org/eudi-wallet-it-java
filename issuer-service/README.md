@@ -20,6 +20,12 @@ test the metadata endpoint :
 curl http://localhost:8082/.well-known/openid-credential-issuer
 ```
 
+test the JWKS endpoint :
+
+```shell script
+curl http://localhost:8082/.well-known/jwks.json
+```
+
 ## Project creation
 
 create command :
