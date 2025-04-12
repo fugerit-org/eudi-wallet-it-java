@@ -1,12 +1,26 @@
 # issuer-service
 
-## Project creation
-
-requisites :
+## Requisites
 
 - Java 21+
 - Maven 3.9.9+
-- Quarkus 3 CLI
+- Quarkus 3 CLI (optional)
+
+## Quickstart
+
+run the project (in port 8082)
+
+```shell script
+mvn quarkus:dev
+```
+
+test the metadata endpoint : 
+
+```shell script
+curl http://localhost:8082/.well-known/openid-credential-issuer
+```
+
+## Project creation
 
 create command :
 
