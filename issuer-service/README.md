@@ -26,6 +26,16 @@ test the JWKS endpoint :
 curl http://localhost:8082/.well-known/jwks.json
 ```
 
+test the credential endpoint :
+
+```shell script
+curl 'http://localhost:8082/credential' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'accept: */*' \
+--data-raw $'{\n                  "format": "sd-jwt",\n                  "credential_type": "UniversityDegreeCredential",\n                  "subject_syntax_type": "did",\n                  "subject_syntax": "did:example:123"\n                }'
+```
+
 ## Project creation
 
 create command :

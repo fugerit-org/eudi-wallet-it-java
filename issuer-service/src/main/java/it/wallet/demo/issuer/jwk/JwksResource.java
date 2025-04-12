@@ -1,7 +1,5 @@
 package it.wallet.demo.issuer.jwk;
 
-import com.nimbusds.jose.jwk.JWKSet;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -12,8 +10,11 @@ import java.util.Map;
 @Path("/.well-known/jwks.json")
 public class JwksResource {
 
-    @Inject
-    JwkProvider jwkProvider;
+    public JwksResource(JwkProvider jwkProvider) {
+        this.jwkProvider = jwkProvider;
+    }
+
+    private JwkProvider jwkProvider;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
