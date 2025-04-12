@@ -9,5 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- gh pages based on rST
 - issuer-sercvice module
 - authentic-source-academic-qualifications module
