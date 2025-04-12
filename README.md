@@ -6,6 +6,8 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fugerit-org_eudi-wallet-it-java&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fugerit-org_eudi-wallet-it-java)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fugerit-org_eudi-wallet-it-java&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fugerit-org_eudi-wallet-it-java)
 
+[![HTML - GitHub Pages](https://img.shields.io/badge/HTML-GitHub%20Pages-blue?style=for-the-badge)](https://fugerit-org.github.io/eudi-wallet-it-java/main/en/ "GitHub Pages")
+
 ## Requirements
 
 [![Java version](https://img.shields.io/badge/run%20on-java%2021+-%23113366.svg?style=for-the-badge&logo=openjdk&logoColor=white)](https://universe.fugerit.org/src/docs/versions/java21.html)

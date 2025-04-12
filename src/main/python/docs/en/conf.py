@@ -129,7 +129,7 @@ html_theme_options = {
     # 'custom_versions_badge': True,
     'collapse_navigation': True,
     "show_theme_credit": False,
-    "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
+    "source_url": 'https://github.com/fugerit-org/eudi-wallet-it-java',
     "source_icon": "github",
     # "banner_text": 'We just launched a newletter, <a href="https://mynewsletter.com/">please subscribe</a>!'
 }
