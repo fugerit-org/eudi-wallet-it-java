@@ -1,6 +1,8 @@
-==============================================
+.. include:: ../common/common_definitions.rst
+
+=====================================
 Italian EUDI Java Demo implementation
-==============================================
+=====================================
 
 Introduction
 ------------
@@ -32,3 +34,12 @@ Here is a diagram showing IT Wallet architecture :
         %% Trust Lookup Flow
         VER -->|Resolve Metadata<br/>& Public Keys| TRUST
         ISS -->|Publishes Metadata<br/>& Keys| TRUST
+
+Index of content
+----------------
+
+.. toctree:: 
+   :maxdepth: 3
+   
+   architecture.rst
+
